@@ -1,0 +1,19 @@
+<beans>
+	<bean id="UI" class="SomeUI">
+		<property name="stageLink" ref="Stage"/>
+		<property name="someModel" ref="Model"/>
+	</bean>
+	
+	<bean id="Log" class="AnotherUI">
+		<property name="stageLink" ref="Stage"/>
+		<property name="someModel" ref="Model"/>
+	</bean>
+	
+	<bean id="Logic" class="SomeLogic">
+		<property name="myView" ref="UI"/>
+		<property name="someModel" ref="Model"/>
+	</bean>
+	
+	<bean id="Model" class="SomeModel"/>
+	
+</beans>
