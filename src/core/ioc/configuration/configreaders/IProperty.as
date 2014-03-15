@@ -1,4 +1,4 @@
-package core.ioc.configuration 
+package core.ioc.configuration.configreaders 
 {
 	
 	/**

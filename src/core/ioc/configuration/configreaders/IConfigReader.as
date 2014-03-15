@@ -1,4 +1,4 @@
-package core.ioc.configuration 
+package core.ioc.configuration.configreaders 
 {
 	
 	/**
@@ -9,8 +9,8 @@ package core.ioc.configuration
 	{
 		
 		function read(config:XML):void;
-		function inject():void
-		function callConstructor():void
+		function handleProperties():void
+		function invorkMethods():void
 		function get ident():String;
 	}
 	

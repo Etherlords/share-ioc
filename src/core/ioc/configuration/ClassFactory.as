@@ -1,8 +1,8 @@
 package core.ioc.configuration 
 {
-	import core.error.ClassReferenceError;
+	import core.ioc.configuration.error.ClassReferenceError;
 	import flash.system.ApplicationDomain;
-	
+
 	public class ClassFactory 
 	{
 		public static const application:ApplicationDomain = ApplicationDomain.currentDomain;
@@ -12,6 +12,7 @@ package core.ioc.configuration
 			if (application.hasDefinition(reference))
 			{
 				var constructor:Class = application.getDefinition(reference) as Class;
+				trace('utils.configuration::ClassFactory craete instance of ' + reference);
 				return new constructor();
 			}
 			else

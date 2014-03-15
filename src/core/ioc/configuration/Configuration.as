@@ -1,9 +1,8 @@
 package core.ioc.configuration 
 {
-	/**
-	 * ...
-	 * @author Nikro
-	 */
+	import core.ioc.configuration.configreaders.Bean;
+	import core.ioc.configuration.configreaders.EventScope;
+	import core.ioc.configuration.configreaders.IConfigReader;
 	public class Configuration 
 	{
 		private static var configReaders:Vector.<Class>;
@@ -17,6 +16,7 @@ package core.ioc.configuration
 		private function initilize():void 
 		{
 			configReaders = new Vector.<Class>
+			configReaders.push(EventScope) //should go before bean;
 			configReaders.push(Bean);
 		}
 		
@@ -47,12 +47,12 @@ package core.ioc.configuration
 			
 			for (i = 0; i < configurators.length; i++)
 			{
-				configurators[i].inject();
+				configurators[i].handleProperties();
 			}
 			
 			for (i = 0; i < configurators.length; i++)
 			{
-				configurators[i].callConstructor();
+				configurators[i].invorkMethods();
 			}
 			
 		}

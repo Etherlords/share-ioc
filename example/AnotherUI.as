@@ -21,7 +21,6 @@ package
 		public function AnotherUI() 
 		{
 			super();
-			
 		}
 		
 		public function initialize():void
