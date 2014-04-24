@@ -2,6 +2,7 @@ package core.ioc.configuration.configreaders
 {
 	import core.error.BeanError;
 	import core.ioc.configuration.ClassFactory;
+	import core.ioc.configuration.error.ClassReferenceError;
 	import core.ioc.configuration.KeyConstants;
 	
 	public class Bean extends AbstractConfigReader
@@ -24,6 +25,7 @@ package core.ioc.configuration.configreaders
 			return _IDENT;
 		}
 		
+		
 		override protected function parse():void 
 		{
 			var clazz:String = config.@[KeyConstants.CLASS_REF];
@@ -35,7 +37,26 @@ package core.ioc.configuration.configreaders
 			if (!clazz)
 				throw BeanError.beanClassNotDefinedError(config[0].toXMLString());
 			
-			instance = ClassFactory.createClass(clazz);
+			if (CONFIG::debug)
+			{
+				try
+				{
+					instance = ClassFactory.createClass(clazz);
+				}
+				catch (e:ClassReferenceError)
+				{
+					var message:String = e.message;
+					
+					message += config.toXMLString();
+					e.message += ' at\n' + message;
+					
+					throw e;
+				}
+			}
+			else
+			{
+				instance = ClassFactory.createClass(clazz);
+			}
 			
 			addToContext(instance, ident);
 		}
@@ -52,8 +73,6 @@ package core.ioc.configuration.configreaders
 			if (init_method in instance)
 				instance[init_method]();
 		}
-		
-		
 		
 	}
 
