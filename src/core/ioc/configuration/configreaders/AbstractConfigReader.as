@@ -55,6 +55,11 @@ package core.ioc.configuration.configreaders
 			
 		}
 		
+		public function postProcedures():void 
+		{
+			
+		}
+		
 	}
 
 }

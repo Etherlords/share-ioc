@@ -7,9 +7,9 @@ package core.ioc.configuration.error
 	public class ClassReferenceError extends Error 
 	{
 		
-		public function ClassReferenceError(message:String = "") 
+		public function ClassReferenceError(message:String = "", message2:String = '') 
 		{
-			super("Class " + message + " not defined in Application, you should create reference for that class in application", 0);
+			super("Class " + message + " not defined in Application, you should create reference for that class in application" + message2, 0);
 			
 		}
 		

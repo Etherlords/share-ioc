@@ -29,6 +29,8 @@ package avmplus
 			| INCLUDE_ACCESSORS | INCLUDE_METHODS | INCLUDE_METADATA | INCLUDE_TRAITS | HIDE_OBJECT;
 
 
+		public static const instance:DescribeTypeJSON = new DescribeTypeJSON();
+			
 		//----------------------               Public Methods               ----------------------//
 		public function DescribeTypeJSON()
 		{

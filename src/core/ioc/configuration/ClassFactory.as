@@ -1,5 +1,8 @@
 package core.ioc.configuration 
 {
+	
+	import avmplus.DescribeTypeJSON;
+	
 	import core.ioc.configuration.error.ClassReferenceError;
 	import flash.system.ApplicationDomain;
 
@@ -17,7 +20,22 @@ package core.ioc.configuration
 			}
 			else
 			{
-				throw new ClassReferenceError(reference);
+				var __typesOf:Vector.<String> = new Vector.<String>
+				var variables:Object = DescribeTypeJSON.instance.getClassDescription(ClassesRef).traits.variables;
+				
+				for (var i:int = 0; i < variables.length; i++)
+				{
+					if (variables[i].type.split("::")[1] == reference.split('.')[reference.split('.').length - 1])
+						__typesOf.push(variables[i].type);
+				}
+				
+				
+				var msg:String = '';
+				
+				if (__typesOf.length)
+					msg = " maybe u mean one of values: " + __typesOf.join(', ');
+				
+				throw new ClassReferenceError(reference, msg);
 			}
 			
 			return null;

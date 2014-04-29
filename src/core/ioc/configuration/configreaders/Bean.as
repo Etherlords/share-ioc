@@ -4,6 +4,7 @@ package core.ioc.configuration.configreaders
 	import core.ioc.configuration.ClassFactory;
 	import core.ioc.configuration.error.ClassReferenceError;
 	import core.ioc.configuration.KeyConstants;
+	import core.utils.Cast;
 	
 	public class Bean extends AbstractConfigReader
 	{	
@@ -11,9 +12,12 @@ package core.ioc.configuration.configreaders
 		
 		public static const DESTROY_METHOD:String = 'destroy-method';
 		public static const INIT_METHOD:String = 'init-method';
+		public static const INJECT_FLAG:String = 'inject';
 		
 		private var destructor:String;
 		private var init_method:String;
+		
+		private var injectFlag:Boolean = false;
 		
 		public function Bean() 
 		{
@@ -33,6 +37,11 @@ package core.ioc.configuration.configreaders
 			
 			destructor = config.@[DESTROY_METHOD];
 			init_method = config.@[INIT_METHOD];
+			
+			var inject_flag:String = config.@[INJECT_FLAG];
+			
+			if (inject_flag)	
+				injectFlag = Cast.toBoolean(config.@[INJECT_FLAG]);
 			
 			if (!clazz)
 				throw BeanError.beanClassNotDefinedError(config[0].toXMLString());
@@ -70,8 +79,17 @@ package core.ioc.configuration.configreaders
 		
 		override public function invorkMethods():void 
 		{
+			if (!init_method)
+				return;
+				
 			if (init_method in instance)
 				instance[init_method]();
+		}
+		
+		override public function postProcedures():void 
+		{
+			if (injectFlag)
+				inject(instance)
 		}
 		
 	}

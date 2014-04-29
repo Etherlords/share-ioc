@@ -11,6 +11,8 @@ package core.ioc.configuration.configreaders
 		function read(config:XML):void;
 		function handleProperties():void
 		function invorkMethods():void
+		
+		function postProcedures():void;
 		function get ident():String;
 	}
 	

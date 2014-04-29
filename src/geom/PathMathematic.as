@@ -10,7 +10,7 @@ package  geom
 		
 		public function PathMathematic() 
 		{
-			inject(this);
+			
 		}
 		
 		public function calculateCurrentPosition(data:MoveData, position:Vector3D):void
