@@ -3,7 +3,7 @@ package core.ioc.configuration
 	
 	import avmplus.DescribeTypeJSON;
 	
-	import core.ioc.configuration.error.ClassReferenceError;
+	import core.error.ClassReferenceError;
 	import flash.system.ApplicationDomain;
 
 	public class ClassFactory 

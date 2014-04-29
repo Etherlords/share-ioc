@@ -1,5 +1,6 @@
 package core.ioc.configuration.configreaders 
 {
+	import core.error.PropertyValueError;
 	import core.ioc.configuration.ClassFactory;
 	import core.ioc.configuration.KeyConstants;
 	import core.ioc.Context;
@@ -7,7 +8,6 @@ package core.ioc.configuration.configreaders
 
 	public class Property implements IProperty
 	{
-		
 		public var instance:Object;
 		public var name:String;
 		
@@ -35,8 +35,10 @@ package core.ioc.configuration.configreaders
 				fromInstance(reference, instance);
 			else if (value)
 				fromValue(value, instance);
-			else
+			else if(clazz)
 				fromClass(clazz, instance);
+			else
+				throw new PropertyValueError(instance.name) 
 				
 			return instance;
 		}
@@ -75,6 +77,8 @@ package core.ioc.configuration.configreaders
 			
 			return ret;
 		}
+		
+		
 		
 	}
 

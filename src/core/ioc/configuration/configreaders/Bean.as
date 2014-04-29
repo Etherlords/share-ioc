@@ -2,7 +2,7 @@ package core.ioc.configuration.configreaders
 {
 	import core.error.BeanError;
 	import core.ioc.configuration.ClassFactory;
-	import core.ioc.configuration.error.ClassReferenceError;
+	import core.error.ClassReferenceError;
 	import core.ioc.configuration.KeyConstants;
 	import core.utils.Cast;
 	
@@ -73,6 +73,7 @@ package core.ioc.configuration.configreaders
 		override public function handleProperties():void
 		{
 			assignProperties(KeyConstants.PROPERTY, Property);
+			assignProperties(KeyConstants.SCOPE, Scope);
 			assignProperties(KeyConstants.METHOD_LOOKUP, MethodLookup);
 			assignProperties(KeyConstants.DESCRIBE_EVENT, DescribeEvent);
 		}
