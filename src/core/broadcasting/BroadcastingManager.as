@@ -24,18 +24,23 @@ package core.broadcasting
 		
 		public function addListener(scope:String, type:String, handler:Function):void
 		{
-			broadcasters.getItem(scope).addEventListener(type, handler);
+			var theScope:Object = broadcasters.getItem(scope);
+			
+			if (!theScope)
+				throw new Error("Broadcasting scope " + scope + ", is not defined");
+				
+			theScope.addEventListener(type, handler);
 		}
 		
 		public function registerScope(broadcaster:EventBroadcaster):void
 		{
-			trace("Info: register broadcaster scope", broadcaster.scope);
+			//trace("Info: register broadcaster scope", broadcaster.scope);
 			broadcasters.addItem(broadcaster.scope, broadcaster);
 		}
 		
 		public function dispatch(scope:String, event:Event):void
 		{
-			trace("Info: broadcast event scope =", scope, "type =", event.type);
+			//trace("Info: broadcast event scope =", scope, "type =", event.type);
 			broadcasters.getItem(scope).dispatchEvent(event);
 		}
 		
