@@ -32,7 +32,15 @@ package core.ioc.configuration.configreaders
 		{
 			return IDENT;
 		}
-		
-	}
+
+        public function handleProperties():void {
+        }
+
+        public function invorkMethods():void {
+        }
+
+        public function postProcedures():void {
+        }
+    }
 
 }

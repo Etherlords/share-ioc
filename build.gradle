@@ -1,0 +1,5 @@
+srcDirs = ['src', 'example']
+
+dependencies {
+    merged project(':share-utils')
+}
