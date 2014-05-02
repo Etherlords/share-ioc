@@ -20,7 +20,7 @@ package core.ioc.configuration
 			}
 			else
 			{
-                var classRef:String = 'ClassesRef';
+                var classRef:Class = ClassesRef;
 				var __typesOf:Vector.<String> = new Vector.<String>
 				var variables:Object = DescribeTypeJSON.instance.getClassDescription(classRef).traits.variables;
 				
