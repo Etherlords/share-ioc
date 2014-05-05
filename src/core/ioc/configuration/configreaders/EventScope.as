@@ -6,7 +6,7 @@ package core.ioc.configuration.configreaders
 	public class EventScope implements IConfigReader 
 	{
 		private static var IDENT:String = "eventScope";
-		private static var SCOPE:String = "scopeName";
+		private static var SCOPE:String = "name";
 		
 		private var config:XML;
 		

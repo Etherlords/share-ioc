@@ -54,14 +54,13 @@ package core.ioc.configuration
 			
 			for (i = 0; i < configurators.length; i++)
 			{
-				configurators[i].invorkMethods();
+				configurators[i].postProcedures();
 			}
 			
 			for (i = 0; i < configurators.length; i++)
 			{
-				configurators[i].postProcedures();
+				configurators[i].invorkMethods();
 			}
-			
 		}
 		
 	}
