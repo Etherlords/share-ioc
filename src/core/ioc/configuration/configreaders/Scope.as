@@ -19,6 +19,9 @@ package core.ioc.configuration.configreaders
 		
 		public function assign(obj:Object):void
 		{
+			if (!(obj is IEventBroadcaster))
+				throw new Error("Scope can be added only on IEventBroadcaster object");
+				
 			(obj as IEventBroadcaster).addScope(value);
 		}
 		
