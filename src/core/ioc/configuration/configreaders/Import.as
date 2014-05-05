@@ -36,7 +36,7 @@ package core.ioc.configuration.configreaders
         public function handleProperties():void {
         }
 
-        public function invorkMethods():void {
+        public function invocMethods():void {
         }
 
         public function postProcedures():void {

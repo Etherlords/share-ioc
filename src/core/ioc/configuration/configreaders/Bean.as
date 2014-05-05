@@ -78,7 +78,7 @@ package core.ioc.configuration.configreaders
 			assignProperties(KeyConstants.DESCRIBE_EVENT, DescribeEvent);
 		}
 		
-		override public function invorkMethods():void 
+		override public function invocMethods():void 
 		{
 			if (!init_method)
 				return;

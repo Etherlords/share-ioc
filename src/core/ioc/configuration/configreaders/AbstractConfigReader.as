@@ -50,7 +50,7 @@ package core.ioc.configuration.configreaders
 			
 		}
 		
-		public function invorkMethods():void 
+		public function invocMethods():void 
 		{
 			
 		}
