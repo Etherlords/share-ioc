@@ -63,8 +63,9 @@ package core.ioc
 			if (!toLoad.length)
 			{
 				loader.removeEventListener(Event.COMPLETE, onSubConfigLoaded);
-				dispatchEvent(new Event(Event.COMPLETE))
 				loader.close();
+				
+				dispatchEvent(new Event(Event.COMPLETE))
 				return;
 			}
 			
