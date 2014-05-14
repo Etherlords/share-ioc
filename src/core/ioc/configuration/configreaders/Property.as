@@ -27,6 +27,9 @@ package core.ioc.configuration.configreaders
 			
 			instance.name = xml.@[KeyConstants.NAME];
 			
+			if (!instance.name)
+				throw new Error("Name for property is not set");
+			
 			var reference:String = xml.@[KeyConstants.REFERANCE]
 			var value:String = xml.@[KeyConstants.VALUE];
 			var clazz:String = xml.@[KeyConstants.CLASS_REF];

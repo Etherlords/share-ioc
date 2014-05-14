@@ -30,6 +30,9 @@ package core.ioc.configuration.configreaders
 		{
 			var scopeName:String = config.@[SCOPE];
 			
+			if (!scopeName)
+				throw new Error("Scope name is not defined");
+			
 			var eventBroadcaster:EventBroadcaster = new EventBroadcaster(scopeName);
 			
 			BroadcastingManager.instance.registerScope(eventBroadcaster);
